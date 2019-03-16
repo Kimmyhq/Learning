@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        function stringReverse(){
+            // var str=document.getElementsByClassName[0];
+            // console.dir(document.getElementsByClassName("in")[0].value);
+            var str=document.getElementsByClassName("in")[0].value;
+            var restr=str.split("");
+            console.log(restr);
+            restr=restr.reverse();
+            str=restr.join("");
+            console.log(str);
+            console.dir(document.getElementsByTagName("h1")[0]);
+            document.getElementsByTagName("h1")[0].innerText="反转后的字符串是："+str;
+
+        }
+    </script>
+</head>
+<body>
+    <input type="text" class="in">
+    <button onclick="stringReverse()">Reverse</button>
+    <h1></h1>
+</body>
+</html>
