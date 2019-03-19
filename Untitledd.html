@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .liner{
+            width: 30px;
+            height: 800px;
+            background: linear-gradient(#b9b1b1,rgb(170, 166, 166),rgb(162, 161, 161),#ccc1c1);
+            position: relative;
+            margin: 0 auto;
+            transition: all linear .3s;
+        }
+        .hand{
+            width:30px;
+            height:20px;
+            background: linear-gradient(grey,white,white,grey);
+            margin:0 auto;
+        }
+        .in{
+            width: 46px;
+            height: 45px;
+            text-align: center;
+            margin-left:4px;
+           
+        }
+        input{
+            border: 1px solid white;
+        }
+        .container{
+            width: 430px;
+            height: 330px;
+            margin: 0 auto;
+            border:9px #776447 solid;
+            border-radius:15px;
+            position: relative;
+            text-align: center;
+            background: rosybrown;
+            /* top:0; */
+            line-height: 70px;
+            /* padding-top: 15px; */
+            box-shadow: 5px 5px 5px grey;
+            font-weight: bold;
+            /* display: none; */
+            transition:all linear .2s;
+            /* transform: rotateY('360deg'); */
+
+        }
+        .container h2{
+            font-size: 40px;
+            margin-top: 15px;
+            color:white;
+        }
+        .con_ch{
+            /* background:#283d7b; */
+            color: white;
+            width: 315px;
+            height: 240px;
+            position: relative;
+            margin: 0 auto;
+            text-align: left;
+        }
+        button{
+            width: 80px;
+            height: 30px;
+            background:#fbff3f;
+            border: none;
+            font: white;
+            border-radius: 15px;
+            outline:0;
+            box-shadow:8px 10px 10px #867c7c;
+        }
+        .decoration{
+            position: absolute;
+            top:5%;
+            left:80%;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 8px;
+            /* display: none; */
+            color: black;
+        }
+        .large{
+            width: 20px;
+            height: 20px;
+            background:yellow;
+        }
+        .small{
+            width: 15px;
+            height: 15px;
+            background: rgb(216, 207, 207);
+            margin-left: 2px;
+        }
+      
+    </style>
+    <script src='https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js'></script>
+    <script>
+        $(function(){
+            $(".container").animate({
+                "top":-750+"px",
+                // "transform":"rotateY("+100+"deg)"
+            },500)
+            $(".liner").animate({
+                "top":-750+"px",
+            },500,function(){
+                $(".decoration").css({"color":"white"});
+            })
+        })
+        var checkNum="";
+        function gainText(n){
+            for(var i=0;i<n;i++)
+            {
+                checkNum+=Math.ceil(Math.random()*9);
+                check=document.getElementsByClassName("in")[i]
+            }
+            alert(checkNum)
+        }
+        function checkText(){
+            var inText="";
+            var num=document.getElementsByClassName("in").length;
+            var clsin=document.getElementsByClassName("in");
+            for(var i=0;i<num;i++){
+                inText+=clsin[i].value;
+            }
+            checkNum==inText?alert("Right!"):
+            alert("Wrong!Try gain code again!");
+            checkNum="";
+            for(var i=0;i<num;i++)
+            {
+                clsin[i].value="";
+            }
+        }
+    //     $(".in").keyup(function(){
+    //         $(this).
+    //     })
+    </script>
+</head>
+<body>
+    <div class="liner">
+    </div>
+    <div class="container">
+        <h2>用户登录</h2>
+        <div class="con_ch">
+            用户名:<input type="text"><br>
+            密&nbsp;&nbsp;码: <input type="text">
+            <button onclick="gainText(4)">获取验证码</button><br>
+            <input type="text" class="in" maxLength=1>
+            <input type="text" class="in" maxLength=1>
+            <input type="text" class="in" maxLength=1>
+            <input type="text" class="in" maxLength=1>
+            <button onclick="checkText()">验证</button>
+        </div>
+        <div class="hand">
+
+        </div>
+        
+    </div>
+    <div class="decoration">
+        <div class="large">w</div>
+        <div class="small">三</div>
+    </div>
+</body>
+</html>
