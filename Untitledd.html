@@ -103,6 +103,8 @@
     <script src='https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js'></script>
     <script>
         $(function(){
+
+            //拉起的样式
             $(".container").animate({
                 "top":-750+"px",
                 // "transform":"rotateY("+100+"deg)"
@@ -112,34 +114,79 @@
             },500,function(){
                 $(".decoration").css({"color":"white"});
             })
+
+
+            //文本框间的跳转
+            var clin=document.getElementsByClassName("in");
+           
+            // $(".in")[a].keyup(function(){
+               
+            // })
+
         })
+
+
+        function moveNext(a){
+            if(a<$(".in").length-1)
+            {
+                 $(".in")[a].blur();
+                $(".in")[a+1].focus();
+            }
+            
+               
+            }
+        //获取验证码
         var checkNum="";
+        var a=["0","1","2","3","4","5","6","7","8","9"];
+        var last=0;
         function gainText(n){
+          
+            
+            // var now=+new Date();
+            // if(now-last>5000){
+            //     last=+new Date();
+            // alert(now+","+last)
+            // }else{
+                checkNum="";
             for(var i=0;i<n;i++)
             {
-                checkNum+=Math.ceil(Math.random()*9);
-                check=document.getElementsByClassName("in")[i]
+                checkNum+=a[~~(Math.random()*9)];
             }
-            alert(checkNum)
+            alert(checkNum);
+            // }
         }
+
+
+        //核对验证码
         function checkText(){
             var inText="";
-            var num=document.getElementsByClassName("in").length;
             var clsin=document.getElementsByClassName("in");
+            var num=clsin.length;
             for(var i=0;i<num;i++){
+                // alert(cls[0])
                 inText+=clsin[i].value;
+                console.log()
             }
-            checkNum==inText?alert("Right!"):
-            alert("Wrong!Try gain code again!");
+            // alert(inText)
+            if(checkNum=="")
+            {
+                alert("Please input the code!")
+            }else if(checkNum==inText) {
+                    alert("Right!");
+            }else{
+                alert("Wrong!Try gain code again!");
+            }
+
+            // checkNum==inText?alert("Right!"):
+            // 
+            
             checkNum="";
             for(var i=0;i<num;i++)
             {
                 clsin[i].value="";
             }
         }
-    //     $(".in").keyup(function(){
-    //         $(this).
-    //     })
+     
     </script>
 </head>
 <body>
@@ -151,11 +198,11 @@
             用户名:<input type="text"><br>
             密&nbsp;&nbsp;码: <input type="text">
             <button onclick="gainText(4)">获取验证码</button><br>
-            <input type="text" class="in" maxLength=1>
-            <input type="text" class="in" maxLength=1>
-            <input type="text" class="in" maxLength=1>
-            <input type="text" class="in" maxLength=1>
-            <button onclick="checkText()">验证</button>
+            <input type="text" class="in" maxLength=1 onkeyup="moveNext(0)">
+            <input type="text" class="in" maxLength=1 onkeyup="moveNext(1)">
+            <input type="text" class="in" maxLength=1 onkeyup="moveNext(2)">
+            <input type="text" class="in" maxLength=1 onkeyup="moveNext(3)">
+            <button class="check" onclick="checkText()">验证</button>
         </div>
         <div class="hand">
 
